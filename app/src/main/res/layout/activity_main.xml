@@ -1,16 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.myapplication.MainActivity">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:tools="http://schemas.android.com/tools"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:context=".activity.MainActivity">
     
-    <Button
-        android:id="@+id/btn"
+    <com.example.myapplication.opengl.AspectFrameLayout
+        android:id="@+id/cameraPreview_afl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerInParent="true">
+        
+        <SurfaceView
+            android:id="@+id/cameraOnTexture_surfaceView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"/>
+    </com.example.myapplication.opengl.AspectFrameLayout>
+    
+    <TextView
+        android:id="@+id/tfcCameraParams_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="click"
-        android:text="紧急呼叫"/>
-
-</android.support.constraint.ConstraintLayout>
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/tfcCameraParams"/>
+    
+    <TextView
+        android:id="@+id/tfcRectSize_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/tfcCameraParams_text"
+        android:text="@string/tfcRectSize"/>
+    
+    <TextView
+        android:id="@+id/tfcZoomArea_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/tfcRectSize_text"
+        android:text="@string/tfcZoomArea"/>
+    
+    
+    <TextView
+        android:id="@+id/tfcZoomLabel_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignTop="@+id/tfcZoom_seekbar"
+        android:text="@string/tfcZoomLabel"/>
+    
+    <SeekBar
+        android:id="@+id/tfcZoom_seekbar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tfcZoomArea_text"
+        android:layout_toRightOf="@+id/tfcRotateLabel_text"/>
+    
+    <TextView
+        android:id="@+id/tfcSizeLabel_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignTop="@+id/tfcSize_seekbar"
+        android:text="@string/tfcSizeLabel"/>
+    
+    <SeekBar
+        android:id="@+id/tfcSize_seekbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tfcZoom_seekbar"
+        android:layout_toRightOf="@+id/tfcRotateLabel_text"/>
+    
+    <TextView
+        android:id="@+id/tfcRotateLabel_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignTop="@+id/tfcRotate_seekbar"
+        android:text="@string/tfcRotateLabel"/>
+    
+    <SeekBar
+        android:id="@+id/tfcRotate_seekbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tfcSize_seekbar"
+        android:layout_toRightOf="@+id/tfcRotateLabel_text"/>
+    
+    <Spinner
+        android:id="@+id/cameraFilter_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layoutMode="opticalBounds"
+        android:layout_below="@id/tfcRotate_seekbar"/>
+    
+    <Button
+        android:id="@+id/toggleRecordingOn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/tfcRotate_seekbar"
+        android:text="@string/toggleRecordingOn"/>
+</RelativeLayout>
